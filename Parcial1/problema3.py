@@ -8,10 +8,10 @@ import os
 import os.path as path
 import wget
 
-if not path.exists('Data'):
-    os.mkdir('Data')
+if not path.exists('DataP3'):
+    os.mkdir('DataP3')
     
-file = 'Data/Parabolico.dat'
+file = 'DataP3/Parabolico.dat'
 url = 'https://raw.githubusercontent.com/asegura4488/Database/main/MetodosComputacionalesReforma/Parabolico.csv'
 
 if not path.exists(file):
