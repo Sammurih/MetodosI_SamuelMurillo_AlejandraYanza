@@ -14,9 +14,10 @@ def SoporteX(a,b,F):
     else:
         print("No hay una raiz en el intervalo")
     return X
-
+dom=np.linspace(-3.5,5,50)
 X=SoporteX(-3.5,5,Function)
 Y=Function(X)
+plt.plot(dom,Function(dom))
 plt.scatter(X,Y,s=10)
 plt.axhline(y = 0,color='r')
 plt.show()
@@ -55,6 +56,7 @@ def hallar_x3(X,F):
         X[2]=EncontrarX3(X,a,b,c)
         e=np.abs(F(X[2]))
         iter+=1
+    print("Iteraciones: " +str(iter))
     return X[2]
 
 print("la raiz de la función es "+str(hallar_x3(X,Function)))
