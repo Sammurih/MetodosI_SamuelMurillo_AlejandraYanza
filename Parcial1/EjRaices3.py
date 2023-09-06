@@ -8,12 +8,13 @@ x = np.linspace(-2,1,100)
 y = Function(x)
 
 plt.plot(x,y)
+plt.axhline(y = 0,color='r')
 plt.show()
 
 def Derivative(f,x,h=1e-6):
     return (f(x+h)-f(x-h))/(2*h)
 
-def GetNewtonMethod(f,df,xn,itmax=1000,precision=1e-5):
+def GetNewtonMethod(f,df,xn,itmax=1000,precision=1e-8):
     error = 1.
     it = 0
     while error > precision and it < itmax:
@@ -31,7 +32,7 @@ def GetNewtonMethod(f,df,xn,itmax=1000,precision=1e-5):
 root = GetNewtonMethod(Function,Derivative,0)
 print(root)
 
-def GetAllRoots(x, tolerancia=4):
+def GetAllRoots(x, tolerancia=6):
     Roots = np.array([])
     for i in x:
         root = GetNewtonMethod(Function,Derivative,i)
@@ -44,5 +45,13 @@ def GetAllRoots(x, tolerancia=4):
     return Roots
 
 Roots = GetAllRoots(x)
-
-print(Roots)
+raices=""
+for i in range(0,len(Roots)):
+    if i==0:
+        raices+=str(Roots[i])
+    else:
+        raices+=", "+str(Roots[i])
+if raices=="":
+    print("No hay raices")
+else:
+    print("Las raices son: " +raices)
