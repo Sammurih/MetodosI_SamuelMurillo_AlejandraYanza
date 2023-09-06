@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 
 def Function (x):
     return np.sqrt(np.tan(x))
-
+def Derivada_Teorica(x):
+    return 0.5/((np.sqrt(np.tan(x)))*(np.cos(x))**2)
 X=np.linspace(0.1,1.1,100)
 Y=np.zeros(len(X))
 h=0.01
@@ -34,3 +35,18 @@ DcY= derivada_central_h_cuadrado (X,Function,h)
 plt.plot(X,DcY,label="Derivada Progresiva")
 plt.legend()
 plt.show()
+
+def Calcular_Error (X,dT,d2):
+    ErrY=np.zeros(len(X))
+    for i in range (0,len(X)):
+        #print(dT(X[0]))
+        ErrY[i]=np.abs(dT(X[i])-d2[i])
+    return ErrY
+#print(Derivada_Teorica(0.1))
+ErrProgresivaY=Calcular_Error(X,Derivada_Teorica,DpY)
+ErrCentralY=Calcular_Error(X,Derivada_Teorica,DcY)
+plt.plot(X,ErrProgresivaY,label="Error Der. Progresiva")
+plt.plot(X,ErrCentralY,label="Error Der. Central")
+plt.legend()
+plt.show()
+#La Derivada Central tiene un menor error nodal, luego, esta es una mejor aproximación porque es más precisa que la proguresiva

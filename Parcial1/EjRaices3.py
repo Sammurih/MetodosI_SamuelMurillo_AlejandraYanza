@@ -45,6 +45,7 @@ def GetAllRoots(x, tolerancia=6):
     return Roots
 
 Roots = GetAllRoots(x)
+
 raices=""
 for i in range(0,len(Roots)):
     if i==0:
