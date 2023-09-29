@@ -1,6 +1,6 @@
 import numpy as np
 import sympy as sym 
-from scipy import integrate
+#from scipy import integrate
 
 
 h=6.626*1e-34
@@ -40,4 +40,6 @@ IntegralDenominador=np.sum(W2*FuncionDenominador(R2))
 F=IntegralNumerador/IntegralDenominador
 print(F)
 
-print("El porcentaje de rayos UV que llegan a la Tierra es de: "+str(round(100*F,1))+"%.")
+print("El porcentaje de rayos UV que vienen de nuestra estrella es de: "+str(round(100*F,1))+"%.")
+#Para e)
+print("Este porcentaje cambia para Bogotá por multiples factores, como no contemplar la atmosfera (especialmete la capa de Ozono), o no tener en cuenta algún tipo de dispersión de esta frecuencia de radiación.")
