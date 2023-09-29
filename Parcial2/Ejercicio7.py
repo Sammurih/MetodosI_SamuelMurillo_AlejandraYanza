@@ -4,7 +4,7 @@ def integrate(n):
     m=np.zeros((n+1,n+1))
     for i in range(n+1):
         for j in range(n+1):
-            val=1-(i*2/n2)-(j2/n*2)
+            val=1-(i*2/n**2)-(j**2/n*2)
             if val>=0:
                 m[i][j]=np.sqrt(val)
 
@@ -19,3 +19,4 @@ def integrate(n):
             v += avg_value/n**2
 
     return v
+print(integrate(1000))
