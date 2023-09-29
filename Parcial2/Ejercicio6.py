@@ -3,11 +3,12 @@ import sympy as sym
 import math
 R=0.5
 a=0.01
-n=10000
+n=100000
 x = np.linspace(-a,a,n)
 IntegralTeorica=np.pi*(R-np.sqrt(R**2-a**2))
 
-print(x)
+#print(x)
+
 def Function(x):
     a=0.01
     R=0.5
@@ -30,19 +31,23 @@ def IntegrateTrapecio(n,x,y):
 def Error(Teorico,Experimental):
     return 100*(1-np.abs(Experimental)/np.abs(Teorico))
 IntegralTrapecio=IntegrateTrapecio(n,x,y)
-print(IntegralTrapecio)
+
 print(IntegralTeorica) 
+
+print(IntegralTrapecio)
 print(Error(IntegralTeorica,IntegralTrapecio))
 
 def Simpson(x,y):
-    h=x[1]-x[0]
+    h=(x[1]-x[0])/2
     x1=x[0]
+    suma=0
     for i in range(1,len(x)):
         x2=x[i]
         xm=(x2+x1)/2
-        suma=(h/3)*(y(x1)+4*y(xm)+y(x2))
+        suma+=(h/3)*(y(x1)+4*y(xm)+y(x2))
         x1=x2
     return suma
 
 IntegralSimpson=Simpson(x,Function)
 print(IntegralSimpson)
+print(Error(IntegralTeorica,IntegralSimpson))
