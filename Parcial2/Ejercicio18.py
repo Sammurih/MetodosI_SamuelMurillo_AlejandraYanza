@@ -74,3 +74,4 @@ print(RootsHermite)
 
 WeightsHermite=GetWeightsGHer(n)
 print(WeightsHermite)
+
