@@ -5,10 +5,7 @@ def volumsemiesfera(r):
     return r/2
 
 
-def cuadrillaxy (R):
-    cua=np.linspace(-R,R)
-    return cua 
-print(cuadrillaxy(1))
+
 
 
 
