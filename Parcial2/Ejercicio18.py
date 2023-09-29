@@ -75,3 +75,16 @@ print(RootsHermite)
 WeightsHermite=GetWeightsGHer(n)
 print(WeightsHermite)
 
+
+
+def oscilador (x):
+    return np.sqrt(1/np.pi) *2*x**4
+
+h=0
+for i in range(7):
+    h+=GetWeightsGHer(8)[i]*oscilador(GetAllRootsGHer(8)[i])
+print(h)
+
+
+
+
