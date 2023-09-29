@@ -1,6 +1,6 @@
 from sympy import exp, diff, solve, factorial, symbols
 x=symbols("x")
-for i in range(20):
+for i in range(21):
     L_i = exp(x) / factorial(i) * diff(exp(-x) * x**i, x, i)
     roots = solve(L_i, x, domain=(0, float('inf')))
     roots = [root.evalf() for root in roots] 
@@ -15,12 +15,12 @@ n=20
 x = sym.Symbol('x',real=True)
 y = sym.Symbol('y',real=True)
 
-def GetLaguerre(n,x,y):
+def GetLaguerre(n,x):
     y = (sym.exp(-x))*x**n
     poly = (sym.exp(x)*sym.diff( y,x,n ))/(math.factorial(n))
     return poly
 
-Laguerre=GetLaguerre(n,x,y)
+Laguerre=GetLaguerre(n,x)
 DLaguerre=sym.diff(Laguerre,x,1)
 
 def GetNewton(f,df,xn,itmax=10000,precision=1e-10):
@@ -59,7 +59,7 @@ def GetAllRootsLaguerre(n,xn,Laguerre,DLaguerre):
 
 def GetWeightsLaguerre(n,xn,Laguerre,DLaguerre):
     Roots = GetAllRootsLaguerre(n,xn,Laguerre,DLaguerre)
-    poly = sym.lambdify([x],GetLaguerre(n+1,x,y),'numpy')
+    poly = sym.lambdify([x],GetLaguerre(n+1,x),'numpy')
     Weights = Roots/(((n+1)**2)*(poly(Roots))**2)
     return Weights
 
