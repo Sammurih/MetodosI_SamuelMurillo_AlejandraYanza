@@ -1,6 +1,5 @@
 import numpy as np
 import sympy as sym 
-from scipy import integrate
 
 x = sym.Symbol('x',real=True)
 h = sym.Symbol('h',real=True)
