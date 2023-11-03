@@ -1,16 +1,35 @@
-A = [[1, 0, 0],[5,1,0],[-2,3,1]]
+import numpy as np
 
-B = [[4, -2, 1],
-    [0, 3, 7],
-    [0, 0, 2]]
-def multiplicar_matrices(a, b):
-    filas_a, columnas_a = len(a), len(a[0])
-    filas_b, columnas_b = len(b), len(b[0])
-    c = [[0] * columnas_b for _ in range(filas_a)]
-    for i in range(filas_a):
-        for j in range(columnas_b):
-            for k in range(columnas_a):
-                c[i][j] += a[i][k] * b[k][j]
-    return c
-AB = multiplicar_matrices(A, B)
+A = np.array([[1,0,0],
+              [5,1,0],
+              [-2,3,1]])
+
+B = np.array([[4,-2,1],
+              [0,3,7],
+              [0,0,2]])
+
+def MatrixMultiplication (A,B):
+    mxn=np.shape(A)
+    nxp=np.shape(B)
+    
+    if len(nxp)==1:
+        C=np.zeros((mxn[0]))
+        for i in range(0,mxn[0]):
+            C[i]=np.dot(A[i,:],B)
+    
+    elif len(mxn)==1:
+        C=np.zeros((mxn[0]))
+        for i in range(0,mxn[0]):
+            C[i]=np.dot(A,B[:,i])
+
+    elif mxn[1]==nxp[0]:
+        C=np.zeros((mxn[0],nxp[1]))
+        for i in range(0,mxn[0]):
+            for j in range(0,nxp[1]):
+                C[i,j]=np.dot(A[i,:],B[:,j])
+
+    else:
+        return "Dimensiones incorrectas"
+    return C
+AB = MatrixMultiplication(A,B)
 print(AB)
