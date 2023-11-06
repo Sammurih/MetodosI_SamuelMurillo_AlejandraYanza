@@ -63,8 +63,8 @@ print(r)
 
 def Metric(G,r):
     return 0.5*np.linalg.norm(GetF(G,r))**2
-
-def Minimizer(G,r,lr=1e-2,epochs=int(1e4),error=1e-7):
+    
+def Minimizer(G,r,lr=1e-4,epochs=int(1e4),error=1e-7):
     
     metric = 1
     it = 0
@@ -87,7 +87,7 @@ def Minimizer(G,r,lr=1e-2,epochs=int(1e4),error=1e-7):
         metric = Metric(G,r)
         
         it += 1
-    
+    print (it)
     return r
 
 r = Minimizer(A,np.array([2.,2.]))
