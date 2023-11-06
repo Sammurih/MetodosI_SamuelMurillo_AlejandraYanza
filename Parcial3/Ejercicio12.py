@@ -60,3 +60,37 @@ r = NewtonRaphson(A,np.array([2.,2.]))[0]
 print(r)
 r = NewtonRaphson(B,np.array([0.,0.,0.]))[0]
 print(r)
+
+def Metric(G,r):
+    return 0.5*np.linalg.norm(GetF(G,r))**2
+
+def Minimizer(G,r,lr=1e-2,epochs=int(1e4),error=1e-7):
+    
+    metric = 1
+    it = 0
+    
+    M = np.array([])
+    R = np.array([r])
+    
+    while metric > error and it < epochs:
+        
+        M = np.append(M,Metric(G,r))
+        
+        J = GetJacobian(G,r)
+        Vector = GetF(G,r)
+        
+        # Machine learning
+        r -= lr*np.dot(J,Vector)
+        
+        R = np.vstack((R,r))
+        
+        metric = Metric(G,r)
+        
+        it += 1
+    
+    return r
+
+r = Minimizer(A,np.array([2.,2.]))
+print(r)
+r = Minimizer(B,np.array([0.,0.,0.]))
+print(r)
