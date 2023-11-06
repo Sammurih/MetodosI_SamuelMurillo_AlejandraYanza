@@ -18,15 +18,12 @@ gamma3 = sp.Matrix([[0, 0, 1, 0],
                    [0, 0, 0, -1],
                    [-1, 0, 0, 0],
                    [0, 1, 0, 0]])
-
+Matrices=[gamma0,gamma1,gamma2,gamma3]
 
 A = sp.MatrixSymbol('A', 4, 4)
 B = sp.MatrixSymbol('B', 4, 4)
-
-# Calcular el anticonmutador {A, B}
 anticonmutador = sp.Mul(A, B) + sp.Mul(B, A)
-
-# Sustituir las matrices de símbolos en el anticonmutador
-anticonmutador = anticonmutador.subs({A: gamma0, B: gamma3})
-
-sp.pprint(sp.expand(anticonmutador))
+for i in range(len(Matrices)):
+    for j in range(len(Matrices)):
+        print("gamma"+str(i),"gamma"+str(j))
+        sp.pprint(sp.expand(anticonmutador.subs({A: Matrices[i], B: Matrices[j]})))
