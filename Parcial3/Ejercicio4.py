@@ -12,7 +12,10 @@ def MatrixMultiplication (A,B):
     mxn=np.shape(A)
     nxp=np.shape(B)
     
-    if len(nxp)==1:
+    if len(nxp)==1 and len(mxn)==1:
+        C=np.dot(A,B)
+
+    elif len(nxp)==1:
         C=np.zeros((mxn[0]))
         for i in range(0,mxn[0]):
             C[i]=np.dot(A[i,:],B)
