@@ -14,9 +14,10 @@ x0, y0 = 0.5,0.1
 Gradient = lambda f,x,y: np.array([Dx(f,x,y),Dy(f,x,y)])
 Gradient(Function,x0,y0)
 
-def Minimizer(f, N = 100, gamma = 0.01):
+def Minimizer(f, N = 100, gamma = 0.001):
     r = np.zeros((N,2))
-    r[0] = np.random.uniform(-5.,5.,size=2)
+    #r[0] = np.random.uniform(-5.,5.,size=2)
+    r[0] = np.array([0.,3.]) #Semilla
     
     Grad = np.zeros((N,2))
     Grad[0] = Gradient(f,r[0,0],r[0,1])
@@ -27,9 +28,27 @@ def Minimizer(f, N = 100, gamma = 0.01):
         
     return r,Grad
 
+def Minimizer_Momentum(f, N = 100, gamma = 0.001, momentum=0.6):
+    r = np.zeros((N,2))
+    #r[0] = np.random.uniform(-5.,5.,size=2)
+    r[0] = np.array([0.,3.]) #Semilla
+
+    Grad = np.zeros((N,2))
+    Grad[0] = Gradient(f,r[0,0],r[0,1])
+
+    for i in tqdm(range(1,N)):
+        r[i] = r[i-1] - gamma*Gradient(f,r[i-1,0],r[i-1,1])+momentum*(r[i-1]-r[i-2])
+        Grad[i] = Gradient(f,r[i-1,0],r[i-1,1])
+        
+    return r,Grad
+
 N = 200
 r,Grad = Minimizer(Function,N)
 print(r[-1])
+
+N = 200
+rM,GradM = Minimizer_Momentum(Function,N)
+print(rM[-1])
 
 fig = plt.figure(figsize=(8,3))
 ax = fig.add_subplot(1,2,1, projection = '3d',elev = 50, azim = -70)
@@ -56,11 +75,15 @@ def Update(i):
     ax.set_title(r'$N=%.0f, Cost=%.3f$'%(i,Function(r[i,0],r[i,1])))
     ax.plot_surface(X,Y,Z, cmap = 'coolwarm', alpha=0.4)
     ax.scatter(r[:i,0],r[:i,1],Function(r[:i,0],r[:i,1]),marker='.',color='r')
+    ax.scatter(rM[:i,0],rM[:i,1],Function(rM[:i,0],rM[:i,1]),marker='.',color='b')
     
     ax1.contour(X,Y,Function(X,Y))
-    ax1.scatter(r[i,0],r[i,1],color='r') 
+    ax1.scatter(r[i,0],r[i,1],color='r',label="Original") 
     ax1.quiver(r[i,0],r[i,1],-Grad[i,0],-Grad[i,1],color='r')
-
+    ax1.scatter(rM[i,0],rM[i,1],color='b',label="Momentum") 
+    ax1.quiver(rM[i,0],rM[i,1],-GradM[i,0],-GradM[i,1],color='b')
+    plt.legend()
 Animation = animation.FuncAnimation(fig, Update, frames=N,init_func=init)
+
 plt.show()
 

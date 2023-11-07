@@ -23,7 +23,7 @@ ax = fig.add_subplot(111, projection='3d')
 ax.set_xlim(-4, 4)
 ax.set_ylim(-4, 4)
 ax.set_zlim(-10, 10)
-ax.plot_surface(x, y, z, cmap='viridis',alpha=0.5)
+ax.plot_surface(x, y, z, cmap='coolwarm',alpha=0.5)
 ax.plot_surface(x, y, Z, color='blue',alpha=0.3)
 ax.scatter([1], [1], [2], color='red', s=10)
 
