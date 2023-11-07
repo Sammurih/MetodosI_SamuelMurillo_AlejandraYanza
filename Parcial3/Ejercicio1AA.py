@@ -15,7 +15,7 @@ y=np.linspace(-4,4,50)
 x, y = np.meshgrid(x, y)
 z = x**2 - y**2 + 2*x
 
-#Plano tangente
+#Plano tangente al punto (x1,y1,f(x1,y1))
 Z=Function(x1,y1)+Dx(x1,y1)*(x-x1)+Dy(x1,y1)*(y-y1)
 
 fig = plt.figure()
