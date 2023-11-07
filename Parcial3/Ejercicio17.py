@@ -52,11 +52,11 @@ for i in range(len(x)):
         res = Raices(Fn, SJn, [x[i], y[j]])
 
         if abs(res[0] - (-1/2)) < error and abs(res[1] - (np.sqrt(3)/2)) < error:
-            Fractal[i][j] = 255
+            Fractal[i][j] = 20
         elif abs(res[0] - (-1/2)) < error and abs(res[1] - (-np.sqrt(3)/2)) < error:
-            Fractal[i][j] = 200
+            Fractal[i][j] = 100
         elif abs(res[0] - 1) < error and abs(res[1] - 0) < error:
-            Fractal[i][j] = 173
+            Fractal[i][j] = 255
 
 plt.imshow(Fractal, cmap='viridis', extent=[-1, 1, -1, 1])
 plt.show()
