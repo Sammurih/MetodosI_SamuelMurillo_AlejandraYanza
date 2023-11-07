@@ -86,4 +86,3 @@ def Update(i):
 Animation = animation.FuncAnimation(fig, Update, frames=N,init_func=init)
 
 plt.show()
-
