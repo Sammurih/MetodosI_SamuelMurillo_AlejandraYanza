@@ -1,7 +1,5 @@
 import numpy as np
-import matplotlib.pyplot as plt
 
-# Definamos el sistema usando una lista
 A = np.array([lambda x,y: np.log(x**2+y**2)-np.sin(x*y)-np.log(2)-np.log(np.pi),
      lambda x,y: np.exp(x-y)+np.cos(x*y)])
 
