@@ -58,5 +58,5 @@ for i in range(len(x)):
         elif abs(res[0] - 1) < error and abs(res[1] - 0) < error:
             Fractal[i][j] = 255
 
-plt.imshow(Fractal, cmap='viridis', extent=[-1, 1, -1, 1])
+plt.imshow(Fractal, cmap="coolwarm" ,extent=[-1,1,-1,1])
 plt.show()
