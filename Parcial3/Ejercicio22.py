@@ -93,6 +93,8 @@ print(zsol10)
 zsol11 = NewtonRaphson(z11,Fn,IJn)
 print(zsol11)
 
+
+"""
 def GetAllComplexRoots (Fn,Jn,tolerancia=10):
     N=1000
     Roots = np.zeros((N,2))
@@ -107,20 +109,21 @@ def GetAllComplexRoots (Fn,Jn,tolerancia=10):
     Roots=np.unique(Roots,axis=0)
 
     for i in range(Roots.shape[0]):
-        Roots[i,0]=np.round(Roots[i,0]%2*np.pi, tolerancia)
+        Roots[i,0]=np.round(Roots[i,0]%, tolerancia)
         Roots[i,1]=np.round(Roots[i,1], tolerancia)
     Roots=np.unique(Roots,axis=0)
     Roots=np.unique(Roots,axis=1)
-    """
+    
         croot = np.round(root, tolerancia)
             
         if not any(np.array_equal(croot, root) for root in Roots):    
             Roots.append(croot)
     for i in range(len(Roots)):
         Roots[i][0]=Roots[i][0]%2*np.pi
-    """
+    
     return Roots
 print("###")
 Roots=GetAllComplexRoots(Fn,IJn)
 for i in range(len(Roots)):
     print(Roots[i])
+"""
