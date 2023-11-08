@@ -53,7 +53,7 @@ def NewtonRaphson(z,Fn,Jn,itmax=1000,precision=1e-10):
         z = z1
         it +=1
         
-    print(it)
+    #print(it)
     return z
 
 z0 = np.array([-0.5,0 ])
@@ -92,3 +92,25 @@ zsol10 = NewtonRaphson(z10,Fn,IJn)
 print(zsol10)
 zsol11 = NewtonRaphson(z11,Fn,IJn)
 print(zsol11)
+
+def GetAllComplexRoots (Fn,Jn,tolerancia=10):
+    Roots = []
+    N=1000
+    x=np.linspace(0,2*np.pi,N)
+    
+    for i in range(N):
+        
+        z=np.array([np.cos(x[i]),np.sin(x[i])])
+
+        root = NewtonRaphson(z,Fn,Jn)
+        
+        croot = np.round(root, tolerancia)
+            
+        if not any(np.array_equal(croot, root) for root in Roots):    
+            Roots.append(croot)
+
+    return Roots
+print("###")
+Roots=GetAllComplexRoots(Fn,IJn)
+for i in range(len(Roots)):
+    print(Roots[i])
