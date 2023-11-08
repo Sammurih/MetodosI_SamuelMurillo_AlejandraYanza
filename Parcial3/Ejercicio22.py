@@ -93,6 +93,13 @@ print(zsol10)
 zsol11 = NewtonRaphson(z11,Fn,IJn)
 print(zsol11)
 
+#Soluciones reales en grados
+print(zsol0[0]*180/np.pi)
+print(zsol1[0]*180/np.pi)
+print(zsol2[0]*180/np.pi)
+
+print("El ángulo para que las cargas se sostengan es aproximadamente: "+str(zsol1[0]*180/np.pi))
+
 
 """
 def GetAllComplexRoots (Fn,Jn,tolerancia=10):
@@ -114,16 +121,7 @@ def GetAllComplexRoots (Fn,Jn,tolerancia=10):
     Roots=np.unique(Roots,axis=0)
     Roots=np.unique(Roots,axis=1)
     
-        croot = np.round(root, tolerancia)
-            
-        if not any(np.array_equal(croot, root) for root in Roots):    
-            Roots.append(croot)
-    for i in range(len(Roots)):
-        Roots[i][0]=Roots[i][0]%2*np.pi
-    
     return Roots
 print("###")
 Roots=GetAllComplexRoots(Fn,IJn)
-for i in range(len(Roots)):
-    print(Roots[i])
 """
