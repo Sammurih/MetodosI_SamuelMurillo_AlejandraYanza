@@ -2,7 +2,7 @@ import sympy as sp
 
 x, y, z, l = sp.symbols('x y z l')
 
-f = x*2 + y2 + z*2 - 2*z + 1
+f = x**2 + y**2 + z**2 - 2*z + 1
 g = 2*x - 4*y + 5*z - 2
 
 ec1 = sp.diff(f, x) - l * sp.diff(g, x)
