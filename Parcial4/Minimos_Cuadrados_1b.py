@@ -1,17 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-import numpy as np
+
 x = np.linspace(-5,5,100)
 y = np.zeros((3,len(x)))
 
 y[0] = 2*x - 2.
 y[1] = 0.5 - 0.5*x
 y[2] = 4 - x
-
-f1 =lambda _x,_y: 2*_x -_y - 2.
-f2 =lambda _x,_y: _x + 2*_y - 1.
-f3 =lambda _x,_y: _x +_y - 4.
 
 A= np.array([[2,-1],
              [1,2],
@@ -66,29 +62,29 @@ plt.scatter(xsol[0],xsol[1],color='r')
 plt.scatter(P[0][0],P[0][1],color='b')
 plt.show()
 
-# Generar datos
+
+f1 =lambda _x,_y: 2*_x -_y - 2.
+f2 =lambda _x,_y: _x + 2*_y - 1.
+f3 =lambda _x,_y: _x +_y - 4.
+
 x = np.arange(-5, 5, 0.01)
 y = np.arange(-5, 5, 0.01)
 x, y = np.meshgrid(x, y)
 z = np.sqrt(f1(x,y)**2+f2(x,y)**2+f3(x,y)**2)
 
-# Crear la figura y los ejes 3D
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 
-# Plot 3D
 ax.plot_surface(x, y, z, cmap='viridis')
 
-# Configurar etiquetas
 ax.set_xlabel('X Label')
 ax.set_ylabel('Y Label')
 ax.set_zlabel('Z Label')
 
-# Mostrar el gráfico
 plt.show()
 
 #ITERATIVAMENTE ES MUCHO MÁS PESADO COMPUTACIONALMENTE Y NO ES TAN PRECISO COMO EL MÉTODO DE MÍNIMOS CUADRADOS
 #MÍNIMOS CUADRADOS
 #2.5354627641855494 [1.42857143 0.42857143]
 #ITERATIVO
-#2.5358233376952746 [[1.44 0.44]]
+#2.5358233376952746 [[1.45 0.45]]
