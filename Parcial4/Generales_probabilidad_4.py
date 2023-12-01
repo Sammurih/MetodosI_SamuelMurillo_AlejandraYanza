@@ -1,7 +1,4 @@
-
 import matplotlib.pyplot as plt
-
-
 
 def calcular_probabilidad_cumpleaños(n):
     probabilidad = 1.0
